@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=db;Database=BirdWatchingDb;User Id=sa;Password=YourPassword;TrustServerCertificate=True;
+    ports:
+      - "5000:80"
+    networks:
+      - birdnet
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql-birdwatching
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1433:1433"
+    networks:
+      - birdnet
+
+networks:
+  birdnet:
