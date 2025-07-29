@@ -11,8 +11,8 @@
         public string Location { get; set; }
         public string Note { get; set; }
         public Uri PhotoUrl { get; set; }
-        public ControlCenter ControlCenter { get; set; }
-        public int ControlCenterId { get; set; }
+        public ControlCenter? ControlCenter { get; set; }
+        public int? ControlCenterId { get; set; }
 
     }
 }
