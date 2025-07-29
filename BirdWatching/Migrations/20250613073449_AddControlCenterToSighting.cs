@@ -10,12 +10,11 @@ namespace BirdWatching.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<int?>(
                 name: "ControlCenterId",
                 table: "Sightings",
                 type: "int",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "ControlCenters",

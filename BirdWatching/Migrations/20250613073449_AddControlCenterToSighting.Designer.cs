@@ -82,7 +82,7 @@ namespace BirdWatching.Migrations
                     b.Property<int>("BirdId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ControlCenterId")
+                    b.Property<int?>("ControlCenterId")
                         .HasColumnType("int");
 
                     b.Property<DateOnly>("DateObserved")
@@ -146,8 +146,7 @@ namespace BirdWatching.Migrations
                     b.HasOne("BirdWatching.Models.ControlCenter", "ControlCenter")
                         .WithMany()
                         .HasForeignKey("ControlCenterId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("BirdWatching.Models.User", "User")
                         .WithMany()
